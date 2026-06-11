@@ -1,6 +1,6 @@
 const PROJECTS = [
   {
-    icon: '☁️',
+    image: '/javadropbox-logo.png',
     title: 'JavaDropbox',
     description:
       'Basically Dropbox but I built it myself. Full-stack cloud storage app with drag-and-drop uploads, a Spring Boot REST API on the backend, and a CI/CD pipeline through GitHub Actions so deploys don\'t give me anxiety.',
@@ -8,7 +8,8 @@ const PROJECTS = [
     link: 'https://github.com/mevcaus/JavaDropbox',
   },
   {
-    icon: '📱',
+    image: '/stackage-logo.png',
+    imageStyle: { filter: 'invert(1) hue-rotate(180deg) opacity(0.9)', mixBlendMode: 'screen' },
     title: 'Stackage Server',
     description:
       'Backend for a social mobile app, built with Node.js/Express and Cloud Firestore. Hunted down race conditions in the real-time sync logic and optimized API latency by 20% through query tuning. Teamwork was involved, bugs were squashed.',
@@ -35,7 +36,17 @@ function Projects() {
             rel="noopener noreferrer"
           >
             <div className="project-card-header">
-              <div className="project-card-icon">{project.icon}</div>
+              <div className="project-card-icon" style={project.image ? { background: 'transparent' } : {}}>
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={`${project.title} logo`} 
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', ...project.imageStyle }} 
+                  />
+                ) : (
+                  project.icon
+                )}
+              </div>
               <span className="project-card-arrow">↗</span>
             </div>
             <h3 className="project-card-title">{project.title}</h3>
