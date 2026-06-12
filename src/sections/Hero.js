@@ -1,16 +1,6 @@
+import { scrollToSection } from '../utils/scroll';
+
 function Hero() {
-  const scrollToProjects = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('projects');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section className="hero" id="hero">
       <div className="hero-bg">
@@ -32,18 +22,28 @@ function Hero() {
           Big fan of clean code, solid APIs, and not breaking prod.
         </p>
         <div className="hero-cta-group">
-          <button className="hero-cta hero-cta-primary" onClick={scrollToProjects}>
+          <button
+            className="hero-cta hero-cta-primary"
+            onClick={() => scrollToSection('projects')}
+          >
             View My Work →
           </button>
-          <button className="hero-cta hero-cta-secondary" onClick={scrollToContact}>
+          <button
+            className="hero-cta hero-cta-secondary"
+            onClick={() => scrollToSection('contact')}
+          >
             Get in Touch
           </button>
         </div>
       </div>
 
-      <div className="hero-scroll-indicator">
+      <button
+        className="hero-scroll-indicator"
+        onClick={() => scrollToSection('about')}
+        aria-label="Scroll to about section"
+      >
         <div className="hero-scroll-line"></div>
-      </div>
+      </button>
     </section>
   );
 }

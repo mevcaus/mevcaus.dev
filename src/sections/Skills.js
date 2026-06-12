@@ -15,7 +15,7 @@ const SKILL_CATEGORIES = [
 
 function Skills() {
   return (
-    <section className="section" id="skills">
+    <section className="section section--alt" id="skills">
       <p className="section-label reveal">Skills</p>
       <h2 className="section-title reveal reveal-delay-1">
         Technologies I work with

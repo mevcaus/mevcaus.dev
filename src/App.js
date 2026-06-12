@@ -1,22 +1,18 @@
 import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './Navbar';
-import Hero from './Hero';
-import About from './About';
-import Projects from './Projects';
-import Skills from './Skills';
-import Contact from './Contact';
-import Footer from './Footer';
+import { useTheme } from './hooks/useTheme';
+import Navbar from './components/Navbar';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Projects from './sections/Projects';
+import Skills from './sections/Skills';
+import Contact from './sections/Contact';
+import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
+import NotFound from './NotFound';
 
-function SectionDivider() {
-  return (
-    <div className="section-divider">
-      <div className="section-divider-line"></div>
-    </div>
-  );
-}
-
-function App() {
+function HomePage({ theme, toggleTheme }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,19 +33,32 @@ function App() {
 
   return (
     <>
-      <div className="noise-overlay"></div>
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
-      <SectionDivider />
       <About />
-      <SectionDivider />
       <Projects />
-      <SectionDivider />
       <Skills />
-      <SectionDivider />
       <Contact />
       <Footer />
+      <BackToTop />
     </>
+  );
+}
+
+function App() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <BrowserRouter>
+      <div className="noise-overlay"></div>
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage theme={theme} toggleTheme={toggleTheme} />}
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

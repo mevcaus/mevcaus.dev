@@ -9,7 +9,7 @@ const PROJECTS = [
   },
   {
     image: '/stackage-logo.png',
-    imageStyle: { filter: 'invert(1) hue-rotate(180deg) opacity(0.9)', mixBlendMode: 'screen' },
+    invertImage: true,
     title: 'Stackage Server',
     description:
       'Backend for a social mobile app, built with Node.js/Express and Cloud Firestore. Hunted down race conditions in the real-time sync logic and optimized API latency by 20% through query tuning. Teamwork was involved, bugs were squashed.',
@@ -36,12 +36,12 @@ function Projects() {
             rel="noopener noreferrer"
           >
             <div className="project-card-header">
-              <div className="project-card-icon" style={project.image ? { background: 'transparent' } : {}}>
+              <div className={`project-card-icon${project.image ? ' project-card-icon--has-image' : ''}${project.invertImage ? ' project-card-icon--inverted' : ''}`}>
                 {project.image ? (
-                  <img 
-                    src={project.image} 
-                    alt={`${project.title} logo`} 
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', ...project.imageStyle }} 
+                  <img
+                    src={project.image}
+                    alt={`${project.title} logo`}
+                    className="project-card-icon-img"
                   />
                 ) : (
                   project.icon

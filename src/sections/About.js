@@ -1,6 +1,6 @@
 function About() {
   return (
-    <section className="section" id="about">
+    <section className="section section--alt" id="about">
       <p className="section-label reveal">About</p>
       <h2 className="section-title reveal reveal-delay-1">
         A bit about me

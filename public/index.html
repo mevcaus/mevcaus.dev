@@ -10,20 +10,62 @@
       content="Mevludin Causevic — Software Engineer and CS student at Boise State University. Building full-stack applications and backend systems. Open to internships and new-grad roles."
     />
     <meta name="author" content="Mevludin Causevic" />
+
     <meta property="og:title" content="Mevludin Causevic — Software Engineer" />
     <meta property="og:description" content="CS student at Boise State building full-stack applications and backend systems. Explore my work and get in touch." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mevcaus.dev" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mevludin Causevic — Software Engineer" />
+    <meta name="twitter:description" content="CS student at Boise State building full-stack applications and backend systems." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      as="style"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
     <title>Mevludin Causevic — Software Engineer</title>
+
+    <script>
+      (function() {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mevludin Causevic",
+        "url": "https://mevcaus.dev",
+        "jobTitle": "Software Engineer",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Boise State University"
+        },
+        "sameAs": [
+          "https://github.com/mevcaus",
+          "https://www.linkedin.com/in/mevcaus"
+        ]
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

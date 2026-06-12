@@ -1,3 +1,5 @@
+import ContactForm from '../components/ContactForm';
+
 function Contact() {
   return (
     <section className="section contact" id="contact">
@@ -17,6 +19,10 @@ function Contact() {
       >
         mevludincausevic@u.boisestate.edu →
       </a>
+
+      <p className="contact-divider-text reveal reveal-delay-3">or drop a message</p>
+
+      <ContactForm />
 
       <div className="contact-socials reveal reveal-delay-4">
         <a
