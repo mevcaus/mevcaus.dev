@@ -11,6 +11,7 @@ import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import NotFound from './NotFound';
+import Resume from './sections/Resume';
 
 function HomePage({ theme, toggleTheme }) {
   useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
           path="/"
           element={<HomePage theme={theme} toggleTheme={toggleTheme} />}
         />
+        <Route path="/resume" element={<Resume />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { scrollToSection } from '../utils/scroll';
 import { useActiveSection } from '../hooks/useActiveSection';
 import ThemeToggle from './ThemeToggle';
@@ -109,12 +110,9 @@ function Navbar({ theme, toggleTheme }) {
             </a>
           ))}
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          <button
-            className="navbar-resume-btn"
-            onClick={() => window.open('/resume.pdf', '_blank')}
-          >
+          <Link to="/resume" className="navbar-resume-btn">
             Résumé ↗
-          </button>
+          </Link>
         </div>
 
         <button
