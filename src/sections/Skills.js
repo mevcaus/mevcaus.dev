@@ -1,15 +1,15 @@
 const SKILL_CATEGORIES = [
   {
     label: 'Languages',
-    skills: ['Python', 'Java', 'JavaScript', 'SQL', 'Bash'],
+    skills: ['Java', 'Go', 'Python', 'JavaScript', 'SQL', 'Bash'],
   },
   {
     label: 'Frameworks & Libraries',
-    skills: ['Spring Boot', 'Node.js', 'Express.js', 'React', 'REST APIs'],
+    skills: ['Spring Boot', 'Spring Security', 'Node.js', 'Express.js', 'React', 'REST APIs'],
   },
   {
     label: 'Tools & Infrastructure',
-    skills: ['Git', 'GitHub Actions', 'PostgreSQL', 'Firebase', 'Gradle', 'npm', 'Linux'],
+    skills: ['Git', 'GitHub Actions', 'PostgreSQL', 'Firebase', 'Docker', 'Gradle', 'npm', 'Linux'],
   },
 ];
 

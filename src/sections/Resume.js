@@ -5,7 +5,7 @@ const RESUME_DATA = {
   name: 'Mevludin Causevic',
   title: 'Software Engineer',
   contact: {
-    email: 'mevludincausevic@u.boisestate.edu',
+    email: 'mev@mevcaus.dev',
     linkedin: 'in/mevcaus',
     github: 'mevcaus',
     website: 'mevcaus.dev',
@@ -15,7 +15,7 @@ const RESUME_DATA = {
       school: 'Boise State University',
       degree: 'B.S. Computer Science',
       gpa: '3.94',
-      dates: 'Aug 2022 – Dec 2026',
+      dates: 'Aug 2024 – Dec 2026',
       honors: "Dean's List with Highest Honors",
       coursework: [
         'Data Structures',
@@ -31,10 +31,9 @@ const RESUME_DATA = {
     {
       title: 'IT Help Desk Technician',
       company: 'Boise State University OIT',
-      dates: 'Aug 2024 – Present',
+      dates: 'Feb 2025 – Present',
       bullets: [
         'Resolve 50+ technical incidents per week for a user base of 25,000+ across Microsoft Entra MFA, VPN, PeopleSoft, and eduroam, reducing average resolution time through systematic triage',
-        'Automate identity verification and MFA reset workflows using ServiceNow, decreasing ticket escalation rate to IAM team',
         'Author and maintain knowledge base articles documenting novel troubleshooting procedures, enabling consistent resolution across 15+ help desk staff',
       ],
     },
@@ -42,7 +41,8 @@ const RESUME_DATA = {
   projects: [
     {
       name: 'JavaDropbox',
-      dates: 'Jan 2025 – Present',
+      dates: 'Sep 2025 – Present',
+      link: 'https://github.com/mevcaus/JavaDropbox',
       bullets: [
         'Architected a self-hosted cloud storage platform with Java 21/Spring Boot 3, implementing a layered service architecture with JPA/PostgreSQL for file metadata persistence and version control (up to 10 revisions per file)',
         'Engineered path traversal prevention through canonical path validation on all file I/O endpoints, securing upload, download, delete, and directory creation operations against directory traversal attacks',
@@ -53,23 +53,14 @@ const RESUME_DATA = {
     },
     {
       name: 'GoProxy',
-      dates: 'Jun 2025 – Present',
+      dates: 'Jun 2026 – Present',
+      link: 'https://github.com/mevcaus/goproxy',
       bullets: [
         'Built a Layer 7 HTTP load balancer from scratch in Go using only the standard library (net/http, net/http/httputil), implementing configurable reverse proxying across multiple backend servers',
         'Implemented round-robin request distribution with a server pool abstraction, routing incoming traffic across N configurable backends defined via a JSON configuration file',
         'Wrote comprehensive unit tests covering configuration parsing, URL validation, round-robin cycling correctness, and edge cases (malformed JSON, empty backends, missing files)',
       ],
       technologies: 'Go, net/http, httputil, JSON, Unit Testing',
-    },
-    {
-      name: 'Stackage Server',
-      dates: 'Aug 2024 – Dec 2024',
-      bullets: [
-        'Developed RESTful backend services for a social mobile application serving real-time data to iOS/Android clients using Node.js/Express and Cloud Firestore',
-        'Identified and resolved race conditions in concurrent Firestore document writes by implementing optimistic locking with transaction retries, eliminating data inconsistency in multi-user scenarios',
-        'Optimized API response latency by 20% through compound Firestore index tuning and query restructuring, reducing read operations per request from O(n) to O(1) for feed queries',
-      ],
-      technologies: 'Node.js, Express.js, Cloud Firestore, REST APIs',
     },
   ],
   skills: {
@@ -132,7 +123,7 @@ function Resume() {
             <span className="resume-contact-sep">·</span>
             <a href={`https://linkedin.com/${RESUME_DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.linkedin}</a>
             <span className="resume-contact-sep">·</span>
-            <a href={`https://github.com/${RESUME_DATA.contact.github}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.github}</a>
+            <a href={`https://github.com/${RESUME_DATA.contact.github}`} target="_blank" rel="noopener noreferrer">github.com/{RESUME_DATA.contact.github}</a>
             <span className="resume-contact-sep">·</span>
             <a href={`https://${RESUME_DATA.contact.website}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.website}</a>
           </div>
@@ -183,7 +174,13 @@ function Resume() {
           {RESUME_DATA.projects.map((proj) => (
             <div key={proj.name} className="resume-entry">
               <div className="resume-entry-header">
-                <span className="resume-entry-primary">{proj.name}</span>
+                {proj.link ? (
+                  <a href={proj.link} target="_blank" rel="noopener noreferrer" className="resume-entry-primary resume-project-link">
+                    {proj.name} ↗
+                  </a>
+                ) : (
+                  <span className="resume-entry-primary">{proj.name}</span>
+                )}
                 <span className="resume-entry-dates">{proj.dates}</span>
               </div>
               <ul className="resume-bullets">

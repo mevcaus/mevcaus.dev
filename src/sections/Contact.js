@@ -14,10 +14,10 @@ function Contact() {
       </p>
 
       <a
-        href="mailto:mevludincausevic@u.boisestate.edu"
+        href="mailto:mev@mevcaus.dev"
         className="contact-email-link reveal reveal-delay-3"
       >
-        mevludincausevic@u.boisestate.edu →
+        mev@mevcaus.dev →
       </a>
 
       <p className="contact-divider-text reveal reveal-delay-3">or drop a message</p>
@@ -48,7 +48,7 @@ function Contact() {
           </svg>
         </a>
         <a
-          href="mailto:mevludincausevic@u.boisestate.edu"
+          href="mailto:mev@mevcaus.dev"
           className="contact-social-link"
           aria-label="Email"
         >
