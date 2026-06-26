@@ -8,7 +8,7 @@ Personal portfolio website for **Mevludin Causevic** - a Computer Science studen
 
 ## About
 
-This is the source code for my portfolio. It showcases my projects, skills, résumé, and a way to get in touch. I built it to have a single place that reflects what I'm working on and what I care about as an engineer — clean architecture, solid APIs, and code that actually ships.
+This is the source code for my portfolio. It showcases my projects, skills, résumé, and a way to get in touch. I built it to have a single place that reflects what I'm working on and what I care about as an engineer: clean architecture, solid APIs, and code that actually ships.
 
 ## Features
 
@@ -103,7 +103,7 @@ Outputs an optimized bundle to the `build/` directory, ready for deployment.
 | Project | Description | Stack |
 | ------- | ----------- | ----- |
 | [JavaDropbox](https://github.com/mevcaus/JavaDropbox) | Full-stack cloud storage app with drag-and-drop uploads, Spring Boot REST API, and CI/CD via GitHub Actions | Java, Spring Boot, JavaScript, GitHub Actions |
-| [Stackage Server](https://github.com/StackageApp/stackage-server) | Backend for a social mobile app — real-time sync, race condition fixes, 20% API latency improvement | Node.js, Express.js, Firestore, REST APIs |
+| [Stackage Server](https://github.com/StackageApp/stackage-server) | Backend for a social mobile app. real-time sync, race condition fixes, 20% API latency improvement | Node.js, Express.js, Firestore, REST APIs |
 | [GoProxy](https://github.com/mevcaus/goproxy) | Layer 7 HTTP load balancer built from scratch using Go's standard library with round-robin routing and hot-swap configs | Go, net/http, System Design |
 
 ## Contact
