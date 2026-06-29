@@ -4,12 +4,17 @@ import { scrollToSection } from '../utils/scroll';
 import { useActiveSection } from '../hooks/useActiveSection';
 import ThemeToggle from './ThemeToggle';
 
-function Navbar({ theme, toggleTheme }) {
+interface NavbarProps {
+  theme: string;
+  toggleTheme: () => void;
+}
+
+function Navbar({ theme, toggleTheme }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const activeSection = useActiveSection();
-  const navLinksRef = useRef(null);
-  const toggleRef = useRef(null);
+  const navLinksRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -19,7 +24,7 @@ function Navbar({ theme, toggleTheme }) {
 
   useEffect(() => {
     if (!mobileOpen) return;
-    const onKeyDown = (e) => {
+    const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileOpen(false);
         toggleRef.current?.focus();
@@ -31,12 +36,12 @@ function Navbar({ theme, toggleTheme }) {
 
   useEffect(() => {
     if (!mobileOpen || !navLinksRef.current) return;
-    const focusableEls = navLinksRef.current.querySelectorAll('a, button');
+    const focusableEls = navLinksRef.current.querySelectorAll<HTMLElement>('a, button');
     if (focusableEls.length === 0) return;
     const first = focusableEls[0];
     const last = focusableEls[focusableEls.length - 1];
 
-    const trapFocus = (e) => {
+    const trapFocus = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
       if (e.shiftKey) {
         if (document.activeElement === first) {
@@ -65,7 +70,7 @@ function Navbar({ theme, toggleTheme }) {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const handleLinkClick = (e, id) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setMobileOpen(false);
     scrollToSection(id);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { useTheme } from './hooks/useTheme';
@@ -11,9 +11,15 @@ import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import NotFound from './NotFound';
-import Resume from './sections/Resume';
 
-function HomePage({ theme, toggleTheme }) {
+const Resume = React.lazy(() => import('./sections/Resume'));
+
+interface HomePageProps {
+  theme: string;
+  toggleTheme: () => void;
+}
+
+function HomePage({ theme, toggleTheme }: HomePageProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -57,7 +63,14 @@ function App() {
           path="/"
           element={<HomePage theme={theme} toggleTheme={toggleTheme} />}
         />
-        <Route path="/resume" element={<Resume />} />
+        <Route
+          path="/resume"
+          element={
+            <Suspense fallback={<div className="loading-spinner"></div>}>
+              <Resume />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

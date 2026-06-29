@@ -1,0 +1,44 @@
+JavaDropBox:
+Architecture & Design
+- Designed a dual-source metadata strategy where the filesystem serves as source of truth for directory listings while PostgreSQL stores ownership, timestamps, and version history via Spring Data JPA entities.
+- Implemented a mandatory first-run setup flow using a custom Spring Security filter chain that locks down all endpoints until an admin account is created, enabling zero-configuration bootstrapping.
+
+Security & Reliability
+- Prevented path traversal attacks by normalizing all user-supplied file paths with `java.nio.file.Path` and validating that resolved paths remain within the configured serving directory root before any I/O operation.
+- Recorded a complete audit trail of all file operations — uploads, deletions, folder creations — in a `file_history` PostgreSQL table, capturing both successful and failed operations with timestamps, users, and error messages.
+
+Performance & Scale
+- Capped stored file versions at a rolling window of 10 per file, automatically purging the oldest versions from both disk and PostgreSQL to bound storage growth proportionally to the active file count.
+- Reduced Docker image size by employing a multi-stage build — compiling with `gradle:8.5-jdk21`, then copying only the fat JAR into an `eclipse-temurin:21-jre-alpine` runtime image.
+
+DevOps & Tooling
+- Configured GitHub Actions CI to spin up a PostgreSQL 15 service container with health checks, run Gradle builds and tests against it, and cache dependencies across workflow runs for faster iteration.
+- Isolated integration tests from the production database by substituting H2 in-memory storage via test-scoped Spring configuration, enabling parallel-safe test execution in CI.
+
+Core Technical Implementations
+- Built a recursive directory tree traversal that enriches each node with metadata from PostgreSQL when available, falling back to `java.nio.file.BasicFileAttributes` for files without database records.
+- Implemented on-the-fly ZIP archive generation for directory downloads using `java.util.zip.ZipOutputStream`, recursively streaming folder contents into an in-memory `ByteArrayOutputStream` returned as a Spring `Resource`.
+- Developed a version restore mechanism supporting two modes — `OVERWRITE` (replaces current file after versioning it) and `COPY` (creates a named duplicate like `report_v3.pdf`) — selectable per restore request.
+
+GoProxy:
+Architecture & Design
+- Designed a Layer 7 HTTP reverse proxy in Go using only the standard library, eliminating external dependencies while supporting pluggable load balancing strategies via a strategy-dispatch handler pattern
+- Chose sync.RWMutex over a standard Mutex for backend health status to allow concurrent request-handler reads without blocking, reserving exclusive locks for the infrequent health-check writer
+- Separated health checking into a background goroutine on a time.Ticker, decoupling failure detection from the request path so that routing decisions never block on network I/O to unhealthy backends
+
+Security & Reliability
+- Built application-layer health checks via HTTP GET to a configurable /health endpoint, verifying actual application responsiveness rather than relying on TCP-level port reachability
+
+Performance & Scale
+- Implemented lock-free round-robin indexing with sync/atomic.AddUint64, avoiding mutex contention on the hot path where every inbound request increments the routing counter
+- Tracked per-backend active connections using atomic.AddInt64 for O(1) increment/decrement, enabling the least-connections algorithm to route based on real-time load without locking
+- Tracked connection lifecycle with explicit AddConn/RemoveConn calls wrapped in a defer pattern, guaranteeing the active count decrements even when the upstream response encounters an error
+- Verified atomic counter correctness under contention by spawning 1,000 concurrent goroutines and asserting exact counter values, run with Go's -race detector enabled
+
+DevOps & Tooling
+- Wrote 26 tests covering config parsing, routing algorithms, concurrent access, HTTP health probing, and failover behavior — all runnable with go test -race to detect data races at CI time
+- Built integration-style health check tests using httptest.NewServer that spin up real HTTP backends, verify liveness on 200, confirm dead-marking on 500 and connection refused, and validate re-marking after server shutdown
+
+Core Technical Implementations
+- Constructed reverse proxies via httputil.NewSingleHostReverseProxy at pool initialization time, amortizing URL parsing and proxy setup so the per-request hot path performs only handler dispatch and atomic operations
+- Built a least-connections router that scans live backends for the minimum atomic.LoadInt64 value, initializing the comparison at math.MaxInt64 to guarantee the first healthy backend is always selected

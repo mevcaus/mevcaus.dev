@@ -1,74 +1,6 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
-const RESUME_DATA = {
-  name: 'Mevludin Causevic',
-  title: 'Software Engineer',
-  contact: {
-    email: 'mev@mevcaus.dev',
-    linkedin: 'in/mevcaus',
-    github: 'mevcaus',
-    website: 'mevcaus.dev',
-  },
-  education: [
-    {
-      school: 'Boise State University',
-      degree: 'B.S. Computer Science',
-      gpa: '3.94',
-      dates: 'Aug 2024 – Dec 2026',
-      honors: "Dean's List with Highest Honors",
-      coursework: [
-        'Data Structures',
-        'Algorithms',
-        'Software Engineering',
-        'Database Systems',
-        'Operating Systems',
-        'Computer Networks',
-      ],
-    },
-  ],
-  experience: [
-    {
-      title: 'IT Help Desk Technician',
-      company: 'Boise State University OIT',
-      dates: 'Feb 2025 – Present',
-      bullets: [
-        'Resolve 50+ technical incidents per week for a user base of 25,000+ across Microsoft Entra MFA, VPN, PeopleSoft, and eduroam, reducing average resolution time through systematic triage',
-        'Author and maintain knowledge base articles documenting novel troubleshooting procedures, enabling consistent resolution across 15+ help desk staff',
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: 'JavaDropbox',
-      dates: 'Sep 2025 – Present',
-      link: 'https://github.com/mevcaus/JavaDropbox',
-      bullets: [
-        'Architected a self-hosted cloud storage platform with Java 21/Spring Boot 3, implementing a layered service architecture with JPA/PostgreSQL for file metadata persistence and version control (up to 10 revisions per file)',
-        'Engineered path traversal prevention through canonical path validation on all file I/O endpoints, securing upload, download, delete, and directory creation operations against directory traversal attacks',
-        'Built a CI/CD pipeline using GitHub Actions with a PostgreSQL service container, automated Gradle builds, JUnit 5 tests, and Dependabot dependency graph submission for vulnerability tracking',
-        'Implemented Spring Security with BCrypt password hashing, form-based authentication, session management, and a first-run setup filter to handle zero-config bootstrapping',
-      ],
-      technologies: 'Java 21, Spring Boot 3, Spring Security, JPA, PostgreSQL, Thymeleaf, GitHub Actions, Docker, Gradle',
-    },
-    {
-      name: 'GoProxy',
-      dates: 'Jun 2026 – Present',
-      link: 'https://github.com/mevcaus/goproxy',
-      bullets: [
-        'Built a Layer 7 HTTP load balancer from scratch in Go using only the standard library (net/http, net/http/httputil), implementing configurable reverse proxying across multiple backend servers',
-        'Implemented round-robin request distribution with a server pool abstraction, routing incoming traffic across N configurable backends defined via a JSON configuration file',
-        'Wrote comprehensive unit tests covering configuration parsing, URL validation, round-robin cycling correctness, and edge cases (malformed JSON, empty backends, missing files)',
-      ],
-      technologies: 'Go, net/http, httputil, JSON, Unit Testing',
-    },
-  ],
-  skills: {
-    'Languages': 'Java, Go, Python, JavaScript, SQL, Bash',
-    'Frameworks & Libraries': 'Spring Boot, Spring Security, Node.js, Express.js, React, REST APIs',
-    'Tools & Infrastructure': 'Git, GitHub Actions, PostgreSQL, Firebase, Docker, Gradle, npm, Linux',
-  },
-};
+import { RESUME_DATA } from '../data/resume';
 
 function Resume() {
   const resumeRef = useRef(null);
@@ -142,10 +74,6 @@ function Resume() {
               </div>
               <div className="resume-entry-meta">
                 GPA: {edu.gpa} · {edu.honors}
-              </div>
-              <div className="resume-coursework">
-                <span className="resume-coursework-label">Coursework:</span>{' '}
-                {edu.coursework.join(', ')}
               </div>
             </div>
           ))}

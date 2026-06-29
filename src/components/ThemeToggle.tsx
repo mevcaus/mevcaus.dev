@@ -1,4 +1,9 @@
-function ThemeToggle({ theme, toggleTheme }) {
+interface ThemeToggleProps {
+  theme: string;
+  toggleTheme: () => void;
+}
+
+function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps) {
   return (
     <button
       className="theme-toggle"

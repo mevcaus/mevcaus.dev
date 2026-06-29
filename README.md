@@ -14,18 +14,19 @@ This is the source code for my portfolio. It showcases my projects, skills, rés
 
 - **Dark / Light Theme** — System-preference-aware with manual toggle, persisted via `localStorage`
 - **Responsive Design** — Mobile-first layout with an accessible hamburger menu, focus trapping, and keyboard navigation
+- **Code-Splitting & Performance** — Leverages `React.lazy()` and `<Suspense>` to load the `/resume` route dynamically, reducing initial bundle size
+- **Strictly Typed** — Built entirely with TypeScript, utilizing strict typing for components, events, and hooks
 - **Scroll Animations** — Section reveal effects powered by `IntersectionObserver`
 - **Interactive Résumé** — Dedicated `/resume` route with print-optimized styles and PDF download
-- **Contact Form** — Submissions handled via [Formspree](https://formspree.io) (no backend required)
+- **Contact Form** — Submissions handled via [Formspree](https://formspree.io) with environment variable security
 - **SEO & Open Graph** — Structured data (JSON-LD), meta tags, OG images, and Twitter cards
-- **Custom 404 Page** — Catch-all route for unmatched paths
 - **Accessibility** — ARIA labels, semantic HTML, focus management, and keyboard-accessible UI
 
 ## Tech Stack
 
 | Layer         | Technology                                             |
 | ------------- | ------------------------------------------------------ |
-| Framework     | [React 18](https://react.dev)                          |
+| Framework     | [React 18](https://react.dev) (TypeScript)             |
 | Routing       | [React Router v7](https://reactrouter.com)             |
 | Styling       | Vanilla CSS (custom properties, no utility frameworks)  |
 | Typography    | Inter, Instrument Serif, JetBrains Mono (Google Fonts) |
@@ -44,26 +45,32 @@ mevcaus.dev/
 │   └── *-logo.png              # Project logo assets
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.js           # Responsive nav with active-section tracking
-│   │   ├── ContactForm.js      # Formspree-powered contact form
-│   │   ├── ThemeToggle.js      # Dark/light mode switch
-│   │   ├── BackToTop.js        # Scroll-to-top button
-│   │   └── Footer.js           # Site footer
+│   │   ├── Navbar.tsx          # Responsive nav with active-section tracking
+│   │   ├── ContactForm.tsx     # Formspree-powered contact form
+│   │   ├── ThemeToggle.tsx     # Dark/light mode switch
+│   │   ├── BackToTop.tsx       # Scroll-to-top button
+│   │   └── Footer.tsx          # Site footer
 │   ├── sections/
-│   │   ├── Hero.js             # Landing hero with animated orbs
-│   │   ├── About.js            # Bio, GPA, and graduation info
-│   │   ├── Projects.js         # Featured project cards
-│   │   ├── Skills.js           # Categorized tech skills
-│   │   ├── Contact.js          # Contact section with socials
-│   │   └── Resume.js           # Full interactive résumé page
+│   │   ├── Hero.tsx            # Landing hero with animated orbs
+│   │   ├── About.tsx           # Bio, GPA, and graduation info
+│   │   ├── Projects.tsx        # Featured project cards
+│   │   ├── Skills.tsx          # Categorized tech skills
+│   │   ├── Contact.tsx         # Contact section with socials
+│   │   └── Resume.tsx          # Full interactive résumé page
 │   ├── hooks/
-│   │   ├── useTheme.js         # Theme state + system preference sync
-│   │   └── useActiveSection.js # IntersectionObserver-based nav highlight
+│   │   ├── useTheme.ts         # Theme state + system preference sync
+│   │   └── useActiveSection.ts # IntersectionObserver-based nav highlight
+│   ├── data/
+│   │   ├── projects.ts         # Abstracted project data
+│   │   ├── skills.ts           # Abstracted skills data
+│   │   └── resume.ts           # Abstracted resume data
 │   ├── utils/
-│   │   └── scroll.js           # Smooth scroll helper
-│   ├── App.js                  # Root component and routing
+│   │   └── scroll.ts           # Smooth scroll helper
+│   ├── App.tsx                 # Root component with Suspense routing
 │   ├── App.css                 # Global styles and design system
 │   └── index.css               # CSS reset and base tokens
+├── .env                        # Environment variables (Formspree endpoint)
+├── tsconfig.json               # TypeScript configuration
 └── package.json
 ```
 

@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqeogppb';
+const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || '';
 
 function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
     try {
@@ -87,7 +87,7 @@ function ContactForm() {
           required
           className="contact-form-input contact-form-textarea"
           placeholder="What's on your mind?"
-          rows="5"
+          rows={5}
         />
       </div>
       <button
