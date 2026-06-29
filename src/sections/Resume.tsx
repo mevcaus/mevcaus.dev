@@ -53,9 +53,9 @@ function Resume() {
           <div className="resume-contact-row">
             <a href={`mailto:${RESUME_DATA.contact.email}`}>{RESUME_DATA.contact.email}</a>
             <span className="resume-contact-sep">·</span>
-            <a href={`https://linkedin.com/${RESUME_DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.linkedin}</a>
+            <a href={`https://${RESUME_DATA.contact.linkedin}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.linkedin}</a>
             <span className="resume-contact-sep">·</span>
-            <a href={`https://github.com/${RESUME_DATA.contact.github}`} target="_blank" rel="noopener noreferrer">github.com/{RESUME_DATA.contact.github}</a>
+            <a href={`https://${RESUME_DATA.contact.github}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.github}</a>
             <span className="resume-contact-sep">·</span>
             <a href={`https://${RESUME_DATA.contact.website}`} target="_blank" rel="noopener noreferrer">{RESUME_DATA.contact.website}</a>
           </div>
