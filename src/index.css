@@ -26,13 +26,31 @@
   --color-bg-translucent: rgba(9, 9, 11, 0.8);
   --color-bg-overlay: rgba(9, 9, 11, 0.97);
   --color-shadow: rgba(0, 0, 0, 0.3);
-  --color-orb-secondary: rgba(139, 92, 246, 0.15);
-  --color-orb-tertiary: rgba(59, 130, 246, 0.1);
+  /* Faint warm ambient glows for the hero background. Amber-only, so the
+     accent stays the single 10% color (60/30/10) instead of competing with
+     stray purple/blue hues. */
+  --color-ambient-warm: rgba(245, 158, 11, 0.1);
+  --color-ambient-warm-soft: rgba(245, 158, 11, 0.06);
   --color-section-alt: rgba(255, 255, 255, 0.02);
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* Modular type scale (~1.25 ratio) — deliberate, distinct hierarchy steps.
+     xs/sm carry the many small "supporting" roles that were previously
+     spread across 0.7–0.95rem; the eye can now tell levels apart. */
+  --text-xs: 0.75rem;    /* micro-labels, eyebrows, tags, meta */
+  --text-sm: 0.875rem;   /* secondary/supporting & interactive text */
+  --text-base: 1rem;     /* body */
+  --text-md: 1.125rem;   /* lead paragraphs */
+  --text-lg: 1.25rem;    /* card titles, sub-headings */
+  --text-xl: 1.5rem;     /* larger sub-headings */
+  --text-2xl: 2rem;      /* display numerals */
+  /* Fluid heading steps */
+  --text-hero: clamp(3rem, 8vw, 7rem);       /* hero name */
+  --text-section: clamp(2rem, 4vw, 3rem);    /* section titles */
+  --text-contact: clamp(2.5rem, 5vw, 4rem);  /* contact heading */
 
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -78,8 +96,8 @@
   --color-bg-translucent: rgba(250, 250, 249, 0.8);
   --color-bg-overlay: rgba(250, 250, 249, 0.97);
   --color-shadow: rgba(0, 0, 0, 0.06);
-  --color-orb-secondary: rgba(139, 92, 246, 0.08);
-  --color-orb-tertiary: rgba(59, 130, 246, 0.06);
+  --color-ambient-warm: rgba(217, 119, 6, 0.08);
+  --color-ambient-warm-soft: rgba(217, 119, 6, 0.05);
   --color-section-alt: rgba(0, 0, 0, 0.02);
 }
 
