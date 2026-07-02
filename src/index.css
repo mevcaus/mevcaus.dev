@@ -23,6 +23,7 @@
   --color-accent-glow: rgba(245, 158, 11, 0.15);
   --color-accent-glow-strong: rgba(245, 158, 11, 0.3);
 
+
   --color-bg-translucent: rgba(9, 9, 11, 0.8);
   --color-bg-overlay: rgba(9, 9, 11, 0.97);
   --color-shadow: rgba(0, 0, 0, 0.3);
@@ -92,6 +93,7 @@
   --color-accent-hover: #b45309;
   --color-accent-glow: rgba(217, 119, 6, 0.1);
   --color-accent-glow-strong: rgba(217, 119, 6, 0.2);
+
 
   --color-bg-translucent: rgba(250, 250, 249, 0.8);
   --color-bg-overlay: rgba(250, 250, 249, 0.97);

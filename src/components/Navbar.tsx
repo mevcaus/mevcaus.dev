@@ -103,21 +103,44 @@ function Navbar({ theme, toggleTheme }: NavbarProps) {
           className={`navbar-links${mobileOpen ? ' open' : ''}`}
           ref={navLinksRef}
         >
-          {links.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`navbar-link${activeSection === link.id ? ' active' : ''}`}
-              onClick={(e) => handleLinkClick(e, link.id)}
-              aria-current={activeSection === link.id ? 'true' : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
-          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          <Link to="/resume" className="navbar-resume-btn">
-            Résumé ↗
-          </Link>
+          <div className="navbar-links-core">
+            {links.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`navbar-link${activeSection === link.id ? ' active' : ''}`}
+                onClick={(e) => handleLinkClick(e, link.id)}
+                aria-current={activeSection === link.id ? 'true' : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="navbar-pills">
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <div className="navbar-pill-group">
+              <Link to="/writing" className="navbar-pill">
+                <svg 
+                  width="14" 
+                  height="14" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                  <path d="M8 8h8M8 14h8"></path>
+                </svg>
+                Writing
+              </Link>
+              <Link to="/resume" className="navbar-pill">
+                Résumé ↗
+              </Link>
+            </div>
+          </div>
         </div>
 
         <button

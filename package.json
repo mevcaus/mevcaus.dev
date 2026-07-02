@@ -40,5 +40,8 @@
       "last 1 safari version"
     ]
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "shiki": "^4.3.0"
+  }
 }
