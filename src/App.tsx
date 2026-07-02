@@ -13,6 +13,8 @@ import BackToTop from './components/BackToTop';
 import NotFound from './NotFound';
 
 const Resume = React.lazy(() => import('./sections/Resume'));
+const WritingList = React.lazy(() => import('./sections/WritingList'));
+const WritingPost = React.lazy(() => import('./sections/WritingPost'));
 
 interface HomePageProps {
   theme: string;
@@ -71,6 +73,22 @@ function App() {
             </Suspense>
           }
         />
+        <Route
+          path="/writing"
+          element={
+            <Suspense fallback={<div className="loading-spinner"></div>}>
+              <WritingList />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/writing/:slug"
+          element={
+            <Suspense fallback={<div className="loading-spinner"></div>}>
+              <WritingPost />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
@@ -78,3 +96,4 @@ function App() {
 }
 
 export default App;
+

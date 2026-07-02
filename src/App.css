@@ -1856,6 +1856,11 @@
   font-family: inherit;
 }
 
+[data-theme='dark'] .writing-code-shiki .shiki,
+[data-theme='dark'] .writing-code-shiki .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
 
 
 @media (max-width: 768px) {
