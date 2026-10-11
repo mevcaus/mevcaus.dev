@@ -6,14 +6,14 @@ export interface SkillCategory {
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     label: 'Languages',
-    skills: ['Java', 'Go', 'Python', 'JavaScript', 'SQL', 'Bash'],
+    skills: ['Java', 'Go', 'Python', 'JavaScript', 'SQL', 'C', 'Bash'],
   },
   {
     label: 'Frameworks & Libraries',
-    skills: ['Spring Boot', 'Spring Security', 'Node.js', 'Express.js', 'React', 'REST APIs'],
+    skills: ['Spring Boot', 'Spring Security', 'Node.js', 'Express.js', 'React', 'REST APIs', 'JUnit 5', 'Testcontainers'],
   },
   {
     label: 'Tools & Infrastructure',
-    skills: ['Git', 'GitHub Actions', 'PostgreSQL', 'Firebase', 'Docker', 'Gradle', 'npm', 'Linux'],
+    skills: ['Git', 'GitHub Actions', 'PostgreSQL', 'Firebase', 'Docker', 'Gradle', 'npm', 'Linux', 'DigitalOcean'],
   },
 ];

@@ -17,9 +17,10 @@ function Hero() {
         </h1>
         <p className="hero-title">Software Engineer</p>
         <p className="hero-tagline">
-          CS student at Boise State who likes building things that
-          actually work. Mostly backend and full-stack stuff.
-          Big fan of clean code, solid APIs, and not breaking prod.
+          CS senior at Boise State, graduating December 2026 and
+          available January 2027. I build backend services in Java,
+          Spring Boot, and Go. Right now that's an AI support agent 20 of
+          my coworkers use and a restock alert service 10 people pay for.
         </p>
         <div className="hero-cta-group">
           <button

@@ -136,9 +136,15 @@ function Navbar({ theme, toggleTheme }: NavbarProps) {
                 </svg>
                 Writing
               </Link>
-              <Link to="/resume" className="navbar-pill">
+              <a
+                href="/resume.pdf"
+                className="navbar-pill"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+              >
                 Résumé ↗
-              </Link>
+              </a>
             </div>
           </div>
         </div>

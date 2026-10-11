@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { POSTS } from '../data/posts';
 import type { PostBlock } from '../data/posts';
+import { formatDate } from '../utils/date';
 
 function WritingPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -9,9 +10,9 @@ function WritingPost() {
 
   useEffect(() => {
     if (post) {
-      document.title = `${post.title} — Mevludin Causevic`;
+      document.title = `${post.title} | Mevludin Causevic`;
     }
-    return () => { document.title = 'Mevludin Causevic — Software Engineer'; };
+    return () => { document.title = 'Mevludin Causevic | Software Engineer'; };
   }, [post]);
 
   if (!post) {
@@ -67,16 +68,6 @@ function renderBlock(block: PostBlock, index: number) {
       <div className="writing-code-shiki" dangerouslySetInnerHTML={{ __html: block.content }} />
     </div>
   );
-}
-
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number);
-  const date = new Date(year, month - 1, day);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 }
 
 export default WritingPost;

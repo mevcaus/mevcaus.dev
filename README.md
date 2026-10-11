@@ -1,6 +1,6 @@
 # mevcaus.dev
 
-Personal portfolio website for **Mevludin Causevic** - a Computer Science student at Boise State University (graduating December 2026) focused on backend and full-stack software engineering.
+Personal portfolio website for **Mevludin Causevic**, a Computer Science senior at Boise State University (graduating December 2026) focused on backend and full-stack software engineering.
 
 **Live site →** [mevcaus.dev](https://mevcaus.dev)
 
@@ -8,19 +8,20 @@ Personal portfolio website for **Mevludin Causevic** - a Computer Science studen
 
 ## About
 
-This is the source code for my portfolio. It showcases my projects, skills, résumé, and a way to get in touch. I built it to have a single place that reflects what I'm working on and what I care about as an engineer: clean architecture, solid APIs, and code that actually ships.
+This is the source code for my portfolio. It showcases my experience, projects, writing, skills, résumé, and a way to get in touch. I built it to have a single place that reflects what I'm working on and what I care about as an engineer: clean architecture, solid APIs, and code that actually ships.
 
 ## Features
 
-- **Dark / Light Theme** — System-preference-aware with manual toggle, persisted via `localStorage`
-- **Responsive Design** — Mobile-first layout with an accessible hamburger menu, focus trapping, and keyboard navigation
-- **Code-Splitting & Performance** — Leverages `React.lazy()` and `<Suspense>` to load the `/resume` route dynamically, reducing initial bundle size
-- **Strictly Typed** — Built entirely with TypeScript, utilizing strict typing for components, events, and hooks
-- **Scroll Animations** — Section reveal effects powered by `IntersectionObserver`
-- **Interactive Résumé** — Dedicated `/resume` route with print-optimized styles and PDF download
-- **Contact Form** — Submissions handled via [Formspree](https://formspree.io) with environment variable security
-- **SEO & Open Graph** — Structured data (JSON-LD), meta tags, OG images, and Twitter cards
-- **Accessibility** — ARIA labels, semantic HTML, focus management, and keyboard-accessible UI
+- **Dark / Light Theme**: System-preference-aware with manual toggle, persisted via `localStorage`
+- **Responsive Design**: Mobile-first layout with an accessible hamburger menu, focus trapping, and keyboard navigation
+- **Code-Splitting & Performance**: Leverages `React.lazy()` and `<Suspense>` to load the `/writing` routes dynamically, reducing initial bundle size
+- **Strictly Typed**: Built entirely with TypeScript, utilizing strict typing for components, events, and hooks
+- **Scroll Animations**: Section reveal effects powered by `IntersectionObserver`
+- **Résumé**: The navbar button opens `resume.pdf` in a new tab, and `/resume` redirects to it
+- **Writing**: Blog posts at `/writing`, with the latest one featured on the home page
+- **Contact Form**: Submissions handled via [Formspree](https://formspree.io) with environment variable security
+- **SEO & Open Graph**: Structured data (JSON-LD), meta tags, OG images, and Twitter cards
+- **Accessibility**: ARIA labels, semantic HTML, focus management, and keyboard-accessible UI
 
 ## Tech Stack
 
@@ -39,7 +40,8 @@ This is the source code for my portfolio. It showcases my projects, skills, rés
 mevcaus.dev/
 ├── public/
 │   ├── index.html              # HTML shell with SEO, OG, and JSON-LD
-│   ├── resume.pdf              # Downloadable résumé
+│   ├── _redirects              # SPA fallback and /resume redirect to the PDF
+│   ├── resume.pdf              # Résumé (opened from the navbar)
 │   ├── og-image.png            # Open Graph preview image
 │   ├── favicon.svg             # Site favicon
 │   └── *-logo.png              # Project logo assets
@@ -52,19 +54,24 @@ mevcaus.dev/
 │   │   └── Footer.tsx          # Site footer
 │   ├── sections/
 │   │   ├── Hero.tsx            # Landing hero with animated orbs
-│   │   ├── About.tsx           # Bio, GPA, and graduation info
+│   │   ├── About.tsx           # Bio and quick stats
+│   │   ├── Experience.tsx      # Work history
 │   │   ├── Projects.tsx        # Featured project cards
+│   │   ├── Writing.tsx         # Latest post on the home page
 │   │   ├── Skills.tsx          # Categorized tech skills
 │   │   ├── Contact.tsx         # Contact section with socials
-│   │   └── Resume.tsx          # Full interactive résumé page
+│   │   ├── WritingList.tsx     # /writing post list
+│   │   └── WritingPost.tsx     # /writing/:slug post page
 │   ├── hooks/
 │   │   ├── useTheme.ts         # Theme state + system preference sync
 │   │   └── useActiveSection.ts # IntersectionObserver-based nav highlight
 │   ├── data/
+│   │   ├── experience.ts       # Abstracted experience data
+│   │   ├── posts.ts            # Blog posts
 │   │   ├── projects.ts         # Abstracted project data
-│   │   ├── skills.ts           # Abstracted skills data
-│   │   └── resume.ts           # Abstracted resume data
+│   │   └── skills.ts           # Abstracted skills data
 │   ├── utils/
+│   │   ├── date.ts             # Post date formatting
 │   │   └── scroll.ts           # Smooth scroll helper
 │   ├── App.tsx                 # Root component with Suspense routing
 │   ├── App.css                 # Global styles and design system
@@ -109,9 +116,10 @@ Outputs an optimized bundle to the `build/` directory, ready for deployment.
 
 | Project | Description | Stack |
 | ------- | ----------- | ----- |
-| [JavaDropbox](https://github.com/mevcaus/JavaDropbox) | Full-stack cloud storage app with drag-and-drop uploads, Spring Boot REST API, and CI/CD via GitHub Actions | Java, Spring Boot, JavaScript, GitHub Actions |
-| [Stackage Server](https://github.com/StackageApp/stackage-server) | Backend for a social mobile app. real-time sync, race condition fixes, 20% API latency improvement | Node.js, Express.js, Firestore, REST APIs |
-| [GoProxy](https://github.com/mevcaus/goproxy) | Layer 7 HTTP load balancer built from scratch using Go's standard library with round-robin routing and hot-swap configs | Go, net/http, System Design |
+| Help Desk AI Support Agent (Boise State OIT, internal tool) | An AI support agent I built for Boise State's IT help desk, on my own, in about a month. I exported 20,000+ ServiceNow tickets, stripped personal info with a Python script, tested several LLMs, and set up a weekly refresh of the top 100 KB articles. About 20 coworkers use it. | Python, RAG, ServiceNow, REST API |
+| shop-watch (private repo, paid service) | A Go service I run that watches Shopify stores and sends restock and price-drop alerts to 10 paying subscribers through Discord. It runs on a DigitalOcean droplet with health checks, a dead-man switch, and one-command deploys and rollback. | Go, DigitalOcean, Linux, Discord API |
+| [JavaDropbox](https://github.com/mevcaus/JavaDropbox) | Self-hosted file storage modeled on Dropbox. A Spring Boot REST API, PostgreSQL, and a React front end, with file versioning, signed share links, an audit log, and 95 automated tests in CI. | Java, Spring Boot, PostgreSQL, React |
+| [GoProxy](https://github.com/mevcaus/goproxy) | A Layer 7 HTTP load balancer in Go using only the standard library. Round-robin and least-connections routing, health checks, and lock-free counters with sync/atomic. | Go, net/http, Concurrency |
 
 ## Contact
 

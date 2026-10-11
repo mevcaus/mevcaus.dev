@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { POSTS } from '../data/posts';
+import { formatDate } from '../utils/date';
 
 function WritingList() {
   useEffect(() => {
-    document.title = 'Writing — Mevludin Causevic';
-    return () => { document.title = 'Mevludin Causevic — Software Engineer'; };
+    document.title = 'Writing | Mevludin Causevic';
+    return () => { document.title = 'Mevludin Causevic | Software Engineer'; };
   }, []);
 
   return (
@@ -40,16 +41,6 @@ function WritingList() {
       </div>
     </div>
   );
-}
-
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number);
-  const date = new Date(year, month - 1, day);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 }
 
 export default WritingList;

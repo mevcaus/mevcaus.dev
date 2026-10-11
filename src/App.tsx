@@ -5,14 +5,15 @@ import { useTheme } from './hooks/useTheme';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
+import Experience from './sections/Experience';
 import Projects from './sections/Projects';
+import Writing from './sections/Writing';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import NotFound from './NotFound';
 
-const Resume = React.lazy(() => import('./sections/Resume'));
 const WritingList = React.lazy(() => import('./sections/WritingList'));
 const WritingPost = React.lazy(() => import('./sections/WritingPost'));
 
@@ -45,13 +46,25 @@ function HomePage({ theme, toggleTheme }: HomePageProps) {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <About />
+      <Experience />
       <Projects />
+      <Writing />
       <Skills />
       <Contact />
       <Footer />
       <BackToTop />
     </>
   );
+}
+
+// Cloudflare redirects /resume before the app loads (see public/_redirects).
+// This covers the dev server and anything that still routes here client-side.
+function ResumeRedirect() {
+  useEffect(() => {
+    window.location.replace('/resume.pdf');
+  }, []);
+
+  return null;
 }
 
 function App() {
@@ -65,14 +78,7 @@ function App() {
           path="/"
           element={<HomePage theme={theme} toggleTheme={toggleTheme} />}
         />
-        <Route
-          path="/resume"
-          element={
-            <Suspense fallback={<div className="loading-spinner"></div>}>
-              <Resume />
-            </Suspense>
-          }
-        />
+        <Route path="/resume" element={<ResumeRedirect />} />
         <Route
           path="/writing"
           element={

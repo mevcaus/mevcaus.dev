@@ -8,9 +8,10 @@ function Contact() {
         Let's <span className="contact-heading-accent">talk.</span>
       </h2>
       <p className="contact-subtitle reveal reveal-delay-2">
-        I'm looking for internships and new-grad roles. If you've got
-        something cool, want to collaborate, or just want to say hey, I'm
-        all ears.
+        I'm looking for new grad software engineering roles starting
+        January 2027, anywhere in the US: remote, hybrid, or on-site. If
+        you've got something cool, want to collaborate, or just want to say
+        hey, I'm all ears.
       </p>
 
       <a
