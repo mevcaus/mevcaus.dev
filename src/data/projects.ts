@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
     title: 'shop-watch',
     label: 'Private repo (paid service)',
     description:
-      'A Go service I run that watches Shopify stores and sends restock and price-drop alerts to 10 paying subscribers through Discord, with one-tap cart links.',
+      'A paid restock and price-drop alert service for Shopify stores.',
     screenshot: {
       src: '/shop-watch-alert.png',
       alt: 'A shop-watch restock alert in Discord showing the product, price, store, stock status, and add-to-cart buttons',
@@ -50,10 +50,11 @@ export const PROJECTS: Project[] = [
       height: 756,
     },
     highlights: [
-      'Runs on a DigitalOcean droplet under a hardened systemd unit behind Caddy TLS, with one-command deploys and rollback.',
-      'Tracks health per target. The /health endpoint returns 503 when anything is degraded, and a dead-man switch fires after 15 minutes without a successful poll.',
+      'Run a paid Go service that watches about 300 Shopify listings, polling products every 30 seconds with jitter, and alerts 10 paying subscribers to restocks and price drops on Discord with one-tap cart links.',
+      'Deployed it on a DigitalOcean droplet under a hardened systemd unit behind Caddy TLS, with Bash and PowerShell scripts for go vet, cross-compiling, health checks, and rollback. Running since September 2026.',
+      'Added a 15-minute dead-man switch for failed polls and a /health endpoint that returns 503 when degraded.',
     ],
-    tags: ['Go', 'DigitalOcean', 'Linux', 'Discord API'],
+    tags: ['Go', 'DigitalOcean', 'Linux (systemd)', 'Caddy', 'Discord API'],
   },
   {
     icon: React.createElement(
@@ -66,7 +67,7 @@ export const PROJECTS: Project[] = [
     title: 'Help Desk AI Support Agent (Boise State OIT)',
     label: 'Internal tool',
     description:
-      'An AI support agent I built on my own in about a month for Boise State\'s IT help desk. It answers questions from 20,000+ past ServiceNow tickets and KB articles. I tested several LLMs along the way, and about 20 coworkers use it now.',
+      'An AI support agent I built on my own in about a month for Boise State\'s IT help desk. It answers questions from 20,000+ past ServiceNow tickets and KB articles. It runs on Claude Sonnet 5, which I picked after testing other LLMs, and about 20 coworkers use it.',
     highlights: [
       'Wrote a Python script that uses regex to strip phone numbers, emails, and other personal info from every ticket before it gets indexed.',
       'A ServiceNow scheduled job pulls the 100 most popular KB articles every week and updates the agent\'s knowledge base through a REST API.',
@@ -79,10 +80,11 @@ export const PROJECTS: Project[] = [
     description:
       'Self-hosted file storage modeled on Dropbox. A Spring Boot REST API, PostgreSQL, and a React front end, with file versioning, signed share links, and an audit log.',
     highlights: [
-      'Every POST started failing with a 403 after I turned on CSRF protection. I traced it to Spring Security loading the token lazily, which never wrote the cookie for a JSON-only SPA.',
-      '95 tests (JUnit 5, MockMvc, Testcontainers, Vitest) run in GitHub Actions against a real PostgreSQL service container.',
+      'Kept the filesystem as the source of truth for files and PostgreSQL for ownership, versions, and audit history, so files added outside the app (scp, a mounted drive) still show up.',
+      'Traced every POST failing with 403 to Spring Security\'s deferred CSRF token loading, which a JSON-only SPA never triggers. Turned it off and added an Axios interceptor that sends the token in X-XSRF-TOKEN.',
+      'Added 700+ automated tests (JUnit 5, MockMvc, Vitest, Playwright) that run in GitHub Actions CI, with every database test on real PostgreSQL 15 through Testcontainers.',
     ],
-    tags: ['Java', 'Spring Boot', 'PostgreSQL', 'React'],
+    tags: ['Java', 'Spring Boot', 'Spring Security', 'PostgreSQL', 'React'],
     link: 'https://github.com/mevcaus/JavaDropbox',
     extraLink: {
       label: 'How the metadata works',
@@ -93,12 +95,12 @@ export const PROJECTS: Project[] = [
     image: '/goproxy-logo.png',
     title: 'GoProxy',
     description:
-      'A Layer 7 HTTP load balancer in Go using only the standard library. Round-robin and least-connections routing, health checks, and lock-free counters with sync/atomic.',
+      'A load balancer written with only Go\'s standard library, no external dependencies.',
     highlights: [
-      'Health checks run on their own goroutine with a time.Ticker, so routing never waits on a dead backend.',
-      '26 tests run under go test -race, including one that hits the counters from 1,000 goroutines and checks the exact totals.',
+      'Built a Layer 7 HTTP load balancer with round-robin and least-connections routing and active health checks.',
+      'Used lock-free sync/atomic counters for shared routing state and added 26 tests under go test -race, including one that hits the counters from 1,000 goroutines and checks the exact totals.',
     ],
-    tags: ['Go', 'net/http', 'Concurrency'],
+    tags: ['Go', 'Standard library only'],
     link: 'https://github.com/mevcaus/goproxy',
   },
   {

@@ -116,10 +116,10 @@ Outputs an optimized bundle to the `build/` directory, ready for deployment.
 
 | Project | Description | Stack |
 | ------- | ----------- | ----- |
-| Help Desk AI Support Agent (Boise State OIT, internal tool) | An AI support agent I built for Boise State's IT help desk, on my own, in about a month. I exported 20,000+ ServiceNow tickets, stripped personal info with a Python script, tested several LLMs, and set up a weekly refresh of the top 100 KB articles. About 20 coworkers use it. | Python, RAG, ServiceNow, REST API |
-| shop-watch (private repo, paid service) | A Go service I run that watches Shopify stores and sends restock and price-drop alerts to 10 paying subscribers through Discord. It runs on a DigitalOcean droplet with health checks, a dead-man switch, and one-command deploys and rollback. | Go, DigitalOcean, Linux, Discord API |
-| [JavaDropbox](https://github.com/mevcaus/JavaDropbox) | Self-hosted file storage modeled on Dropbox. A Spring Boot REST API, PostgreSQL, and a React front end, with file versioning, signed share links, an audit log, and 95 automated tests in CI. | Java, Spring Boot, PostgreSQL, React |
-| [GoProxy](https://github.com/mevcaus/goproxy) | A Layer 7 HTTP load balancer in Go using only the standard library. Round-robin and least-connections routing, health checks, and lock-free counters with sync/atomic. | Go, net/http, Concurrency |
+| Help Desk AI Support Agent (Boise State OIT, internal tool) | An AI support agent I built for Boise State's IT help desk, on my own, in about a month. I exported 20,000+ ServiceNow tickets, stripped personal info with a Python script, and set up a weekly refresh of the top 100 KB articles. It runs on Claude Sonnet 5, picked after testing other LLMs, and about 20 coworkers use it. | Python, RAG, ServiceNow, REST API |
+| shop-watch (private repo, paid service) | A Go service I run that watches about 300 Shopify listings and sends restock and price-drop alerts to 10 paying subscribers through Discord. It runs on a DigitalOcean droplet behind Caddy TLS with health checks, a dead-man switch, and scripted deploys and rollback. | Go, DigitalOcean, Linux (systemd), Caddy, Discord API |
+| [JavaDropbox](https://github.com/mevcaus/JavaDropbox) | Self-hosted file storage modeled on Dropbox. A Spring Boot REST API, PostgreSQL, and a React front end, with file versioning, signed share links, an audit log, and 700+ automated tests in CI. | Java, Spring Boot, Spring Security, PostgreSQL, React |
+| [GoProxy](https://github.com/mevcaus/goproxy) | A Layer 7 HTTP load balancer in Go using only the standard library. Round-robin and least-connections routing, health checks, and lock-free counters with sync/atomic. | Go (standard library only) |
 
 ## Contact
 
