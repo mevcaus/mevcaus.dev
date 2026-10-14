@@ -1,4 +1,5 @@
 import { scrollToSection } from '../utils/scroll';
+import SocialLinks from '../components/SocialLinks';
 
 function Hero() {
   return (
@@ -10,7 +11,7 @@ function Hero() {
       </div>
 
       <div className="hero-content">
-        <p className="hero-greeting">Hello, I'm</p>
+        <p className="hero-greeting">Hello, I'm Mev</p>
         <h1 className="hero-name">
           Mevludin<br />
           <span className="hero-name-accent">Causevic</span>
@@ -29,13 +30,16 @@ function Hero() {
           >
             View My Work →
           </button>
-          <button
+          <a
+            href="/resume.pdf"
             className="hero-cta hero-cta-secondary"
-            onClick={() => scrollToSection('contact')}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Get in Touch
-          </button>
+            Résumé ↗
+          </a>
         </div>
+        <SocialLinks className="hero-socials" />
       </div>
 
       <button

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { scrollToSection } from '../utils/scroll';
 import { useActiveSection } from '../hooks/useActiveSection';
 import ThemeToggle from './ThemeToggle';
@@ -78,6 +77,7 @@ function Navbar({ theme, toggleTheme }: NavbarProps) {
 
   const links = [
     { label: 'About', id: 'about' },
+    { label: 'Experience', id: 'experience' },
     { label: 'Projects', id: 'projects' },
     { label: 'Skills', id: 'skills' },
     { label: 'Contact', id: 'contact' },
@@ -119,23 +119,6 @@ function Navbar({ theme, toggleTheme }: NavbarProps) {
           <div className="navbar-pills">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             <div className="navbar-pill-group">
-              <Link to="/writing" className="navbar-pill">
-                <svg 
-                  width="14" 
-                  height="14" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-                  <path d="M8 8h8M8 14h8"></path>
-                </svg>
-                Writing
-              </Link>
               <a
                 href="/resume.pdf"
                 className="navbar-pill"

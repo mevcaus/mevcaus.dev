@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || '';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqeogppb';
 
 function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

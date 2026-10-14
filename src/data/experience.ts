@@ -25,7 +25,7 @@ export const EXPERIENCE: Job[] = [
     location: 'Remote',
     bullets: [
       'Ran 10 to 15 one-on-one debugging sessions a day for a cohort of 25 students: Node.js and environment errors, code bugs, and Git problems.',
-      'Never fixed a bug for a student. I walked them through why it happened so they could fix it themselves.',
+      'Walked students through why each bug happened so they could find and fix the next one on their own.',
     ],
   },
 ];

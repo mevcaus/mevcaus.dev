@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-const SECTION_IDS = ['hero', 'about', 'experience', 'projects', 'writing', 'skills', 'contact'];
+const SECTION_IDS = ['hero', 'about', 'experience', 'projects', 'skills', 'contact'];
 
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState('');
@@ -15,7 +15,8 @@ export function useActiveSection() {
           }
         });
       },
-      { threshold: 0.2, rootMargin: '-80px 0px -40% 0px' }
+      // A thin band 40% down the viewport, so tall sections still register.
+      { rootMargin: '-40% 0px -55% 0px' }
     );
 
     sectionIds.current.forEach((id) => {

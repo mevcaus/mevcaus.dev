@@ -1,6 +1,6 @@
 const STATS = [
   { value: "Dec '26", label: 'Graduating' },
-  { value: "Jan '27", label: 'Available' },
+  { value: '3.79', label: 'Major GPA' },
   { value: '20', label: 'Coworkers using my AI agent' },
   { value: '10', label: 'Paying subscribers' },
 ];
@@ -25,9 +25,7 @@ function About() {
             I'm most at home working on the <strong>backend and
             full-stack side of things</strong>. REST APIs, CI/CD
             pipelines, databases, that kind of stuff. Most of what I build
-            is in Java with Spring Boot, Go, and React. If something breaks
-            at 2am, I'm probably the one who caused it and also the one
-            fixing it.
+            is in Java with Spring Boot, Go, and React.
           </p>
           <p>
             Right now I also work at Boise State's IT Help Desk, where I

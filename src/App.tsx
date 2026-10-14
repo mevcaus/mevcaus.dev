@@ -7,7 +7,6 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Experience from './sections/Experience';
 import Projects from './sections/Projects';
-import Writing from './sections/Writing';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
@@ -48,7 +47,6 @@ function HomePage({ theme, toggleTheme }: HomePageProps) {
       <About />
       <Experience />
       <Projects />
-      <Writing />
       <Skills />
       <Contact />
       <Footer />

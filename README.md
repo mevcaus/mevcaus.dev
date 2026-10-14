@@ -17,9 +17,9 @@ This is the source code for my portfolio. It showcases my experience, projects, 
 - **Code-Splitting & Performance**: Leverages `React.lazy()` and `<Suspense>` to load the `/writing` routes dynamically, reducing initial bundle size
 - **Strictly Typed**: Built entirely with TypeScript, utilizing strict typing for components, events, and hooks
 - **Scroll Animations**: Section reveal effects powered by `IntersectionObserver`
-- **Résumé**: The navbar button opens `resume.pdf` in a new tab, and `/resume` redirects to it
-- **Writing**: Blog posts at `/writing`, with the latest one featured on the home page
-- **Contact Form**: Submissions handled via [Formspree](https://formspree.io) with environment variable security
+- **Résumé**: The navbar and hero buttons open `resume.pdf` in a new tab, and `/resume` redirects to it
+- **Writing**: Blog posts at `/writing`, linked from the project cards
+- **Contact Form**: Submissions handled via [Formspree](https://formspree.io) (no backend required)
 - **SEO & Open Graph**: Structured data (JSON-LD), meta tags, OG images, and Twitter cards
 - **Accessibility**: ARIA labels, semantic HTML, focus management, and keyboard-accessible UI
 
@@ -41,14 +41,16 @@ mevcaus.dev/
 ├── public/
 │   ├── index.html              # HTML shell with SEO, OG, and JSON-LD
 │   ├── _redirects              # SPA fallback and /resume redirect to the PDF
-│   ├── resume.pdf              # Résumé (opened from the navbar)
+│   ├── resume.pdf              # Résumé (opened from the navbar and hero)
 │   ├── og-image.png            # Open Graph preview image
 │   ├── favicon.svg             # Site favicon
+│   ├── shop-watch-alert.png    # shop-watch alert screenshot
 │   └── *-logo.png              # Project logo assets
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.tsx          # Responsive nav with active-section tracking
 │   │   ├── ContactForm.tsx     # Formspree-powered contact form
+│   │   ├── SocialLinks.tsx     # GitHub, LinkedIn, and email links
 │   │   ├── ThemeToggle.tsx     # Dark/light mode switch
 │   │   ├── BackToTop.tsx       # Scroll-to-top button
 │   │   └── Footer.tsx          # Site footer
@@ -57,7 +59,6 @@ mevcaus.dev/
 │   │   ├── About.tsx           # Bio and quick stats
 │   │   ├── Experience.tsx      # Work history
 │   │   ├── Projects.tsx        # Featured project cards
-│   │   ├── Writing.tsx         # Latest post on the home page
 │   │   ├── Skills.tsx          # Categorized tech skills
 │   │   ├── Contact.tsx         # Contact section with socials
 │   │   ├── WritingList.tsx     # /writing post list
@@ -76,7 +77,6 @@ mevcaus.dev/
 │   ├── App.tsx                 # Root component with Suspense routing
 │   ├── App.css                 # Global styles and design system
 │   └── index.css               # CSS reset and base tokens
-├── .env                        # Environment variables (Formspree endpoint)
 ├── tsconfig.json               # TypeScript configuration
 └── package.json
 ```

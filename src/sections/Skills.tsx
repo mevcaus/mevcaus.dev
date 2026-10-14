@@ -3,7 +3,7 @@ import { SKILL_CATEGORIES } from '../data/skills';
 
 function Skills() {
   return (
-    <section className="section section--alt" id="skills">
+    <section className="section" id="skills">
       <p className="section-label reveal">Skills</p>
       <h2 className="section-title reveal reveal-delay-1">
         Technologies I work with
